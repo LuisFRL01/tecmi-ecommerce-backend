@@ -37,7 +37,7 @@ public class CategoryController {
             categoryService.updateCategory(categoryId, category);
             return new ResponseEntity<>(new ApiResponse(true, "Category has been updated."), HttpStatus.OK);
         }
-    categoryService.updateCategory(categoryId, category);
+        categoryService.updateCategory(categoryId, category);
         return new ResponseEntity<>(new ApiResponse(false, "Category does not exist."), HttpStatus.NOT_FOUND);
     }
 

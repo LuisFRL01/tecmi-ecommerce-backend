@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -30,7 +31,7 @@ public class WishListService {
             throw new CustomException("Wish is invalid => " + wishId);
         }
         Wish wish = optionalWish.get();
-        if(wish.getUser()!= user){
+        if(!Objects.equals(wish.getUser().getId(), user.getId())){
             throw new CustomException("Wish does not belong to user: " + wishId);
         }
         wishRepository.delete(wish);

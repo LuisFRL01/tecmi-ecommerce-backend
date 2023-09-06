@@ -9,7 +9,7 @@ import com.sena.tecmiecommercebackend.repository.ICartRepository;
 import com.sena.tecmiecommercebackend.repository.entity.Cart;
 import com.sena.tecmiecommercebackend.repository.entity.Product;
 import com.sena.tecmiecommercebackend.repository.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,10 +20,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class CartService {
 
-    @Autowired
-    ICartRepository cartRepository;
+    private final ICartRepository cartRepository;
 
     public void addToCart(AddToCardDto addToCartDto, Product product, User user) {
         Cart cart = new Cart(product, addToCartDto.getQuantity(), user);
@@ -42,10 +42,6 @@ public class CartService {
             totalCost += (cartItemDto.getProduct().getPrice()* cartItemDto.getQuantity());
         }
         return new CartDto(cartItems,totalCost);
-    }
-
-    private CartItemDto getDtoFromCart(Cart cart) {
-        return new CartItemDto(cart);
     }
 
     public void deleteCartItem(Integer cartItemId, User user) throws CartItemNotExistException {
@@ -72,5 +68,9 @@ public class CartService {
 
     public void deleteUserCartItems(User user) {
         cartRepository.deleteByUser(user);
+    }
+
+    private CartItemDto getDtoFromCart(Cart cart) {
+        return new CartItemDto(cart);
     }
 }

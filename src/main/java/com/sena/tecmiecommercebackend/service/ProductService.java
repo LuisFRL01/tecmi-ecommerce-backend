@@ -18,9 +18,9 @@ public class ProductService {
     @Autowired
     IProductRepository productRepository;
 
-    public void addProduct(ProductDto productDto, Category category) {
+    public Product addProduct(ProductDto productDto, Category category) {
         Product product = getProductFromDto(productDto, category);
-        productRepository.save(product);
+        return productRepository.save(product);
     }
 
     public List<ProductDto> listProducts() {

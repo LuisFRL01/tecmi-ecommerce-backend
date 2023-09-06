@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ICartRepository extends JpaRepository<Cart, Integer> {
     List<Cart> findAllByUserOrderByCreatedDateDesc(User user);
-    List<Cart> deleteByUser(User user);
+    void deleteByUser(User user);
 }

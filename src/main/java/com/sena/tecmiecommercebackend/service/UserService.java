@@ -62,8 +62,7 @@ public class UserService {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         byte[] digest = md.digest();
-        return DatatypeConverter
-                .printHexBinary(digest).toUpperCase();
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
     }
 
     public SignInResponseDto signIn(SignInDto signInDto) {

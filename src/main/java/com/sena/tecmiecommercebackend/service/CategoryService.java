@@ -2,7 +2,7 @@ package com.sena.tecmiecommercebackend.service;
 
 import com.sena.tecmiecommercebackend.repository.ICategoryRepository;
 import com.sena.tecmiecommercebackend.repository.entity.Category;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,17 +10,17 @@ import java.util.Optional;
 
 
 @Service
+@RequiredArgsConstructor
 public class CategoryService {
 
-    @Autowired
-    ICategoryRepository categoryRepository;
+    private final ICategoryRepository categoryRepository;
 
     public List<Category> listCategories() {
         return categoryRepository.findAll();
     }
 
-    public void createCategory(Category category) {
-        categoryRepository.save(category);
+    public Category createCategory(Category category) {
+        return categoryRepository.save(category);
     }
 
     public Optional<Category> readCategory(Integer categoryId) {
