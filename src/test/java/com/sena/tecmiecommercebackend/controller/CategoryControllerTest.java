@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("Integration")
 @Tag("Controller")
 @SpringBootTest
 public class CategoryControllerTest {

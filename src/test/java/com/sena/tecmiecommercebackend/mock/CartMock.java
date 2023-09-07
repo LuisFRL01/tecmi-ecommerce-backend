@@ -9,6 +9,8 @@ public class CartMock {
 
     public static Cart buildCart(Product product, AddToCardDto addToCartDto, User user) {
         addToCartDto.setProductId(product.getId());
-        return new Cart(product, addToCartDto.getQuantity(), user);
+        var cart = new Cart(product, addToCartDto.getQuantity(), user);
+        cart.setId(1);
+        return cart;
     }
 }

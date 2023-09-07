@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("Integration")
 @Tag("Controller")
 @SpringBootTest
 @Sql(value = {"/wishes-controller.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
@@ -47,10 +48,10 @@ public class WishListControllerTest {
     }
 
     @TestFactory
-    @DisplayName("Retornar produtos da lista de compras")
+    @DisplayName("Retornar produtos da lista de desejos")
     Stream<DynamicTest> shouldReturnWishListTest() {
          Stream<String> tokens = Stream.of("token", "token2");
-         return tokens.map(token -> dynamicTest("a", () -> {
+         return tokens.map(token -> dynamicTest("Retornar produtos da lista de desejos", () -> {
              var wishes = wishListController.getWishList(token);
              assertEquals(HttpStatus.OK, wishes.getStatusCode());
              assertFalse(wishes.getBody().isEmpty());

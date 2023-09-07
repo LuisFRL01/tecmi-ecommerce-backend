@@ -50,7 +50,7 @@ public class CartService {
             throw new CustomException("Cart item id is invalid => " + cartItemId);
         }
         Cart cart = optionalCart.get();
-        if(cart.getUser()!= user){
+        if(cart.getUser().getId() != user.getId()){
             throw new CustomException("Cart item does not belong to user: " + cartItemId);
         }
         cartRepository.delete(cart);
