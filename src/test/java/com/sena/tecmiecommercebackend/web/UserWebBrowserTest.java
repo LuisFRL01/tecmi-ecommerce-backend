@@ -36,6 +36,7 @@ public class UserWebBrowserTest {
   }
 
   @Test
+  @DisplayName("Cria uma conta de usuario")
   public void shoudCreateAccountTest() throws InterruptedException {
     driver.get("http://localhost:9191/");
     driver.manage().window().setSize(new Dimension(1920, 1053));

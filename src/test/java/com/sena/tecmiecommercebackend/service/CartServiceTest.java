@@ -83,8 +83,4 @@ public class CartServiceTest {
         assertDoesNotThrow(() -> cartService.deleteUserCartItems(userMock));
         Mockito.verify(cartRepository, Mockito.times(1)).deleteByUser(Mockito.any(User.class));
     }
-
-    private void rebuildObjects() {
-
-    }
 }

@@ -39,6 +39,7 @@ public class CategoryControllerTest {
     }
 
     @Test
+    @DisplayName("Lista categorias")
     void shouldListCategoryTest() {
         var category = categoryController.getCategories();
         assertEquals(HttpStatus.OK, category.getStatusCode());
@@ -46,6 +47,7 @@ public class CategoryControllerTest {
     }
 
     @Test
+    @DisplayName("Cria categoria")
     void shouldCreateCategoryTest() {
         ResponseEntity<ApiResponse> category = categoryController.createCategory(category2);
         assertEquals(HttpStatus.CREATED, category.getStatusCode());
@@ -53,6 +55,7 @@ public class CategoryControllerTest {
     }
 
     @Test
+    @DisplayName("Atualiza categoria")
     void shouldUpdateCategoryTest() {
         category1.setDescription("Tvs da marca LG de alta qualidade");
         ResponseEntity<ApiResponse> category = categoryController.updateCategory(category1.getId(), category1);

@@ -1,6 +1,7 @@
 package com.sena.tecmiecommercebackend.Repository;
 
 import com.sena.tecmiecommercebackend.repository.IWishRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Tag;
@@ -23,7 +24,8 @@ public class IWishRepositoryTest {
     IWishRepository wishRepository;
 
     @RepeatedTest(value = 1)
-    void teste(RepetitionInfo repetitionInfo) {
+    @DisplayName("Lista produtos da lista de desejo do usuario")
+    void shouldListWishesFromUser(RepetitionInfo repetitionInfo) {
         var allByUserIdOrderByCreatedDateDesc = wishRepository
                 .findAllByUserIdOrderByCreatedDateDesc((long) repetitionInfo.getCurrentRepetition());
 
