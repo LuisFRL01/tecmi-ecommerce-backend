@@ -75,7 +75,7 @@ public class CartServiceTest {
     }
 
     @Test
-    @DisplayName("Erro ao deletar item do carrinho")
+    @DisplayName("Deletar item do carrinho")
     @Disabled
     void shouldDeleteCartItemTest() {
         Mockito.when(cartRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(cart));
