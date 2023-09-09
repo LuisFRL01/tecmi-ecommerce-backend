@@ -36,12 +36,12 @@ public class OrderServiceTest {
     OrderService orderService;
 
     @Nested
-    class FirstNestedClass {
+    class OrderNestedClassOneTest {
 
         private User userMock;
 
         @BeforeEach()
-        void beforeEach() {
+        void setUp() {
             userMock = UserMock.buildUser();
         }
 
@@ -55,7 +55,7 @@ public class OrderServiceTest {
     }
 
     @Nested
-    class SecondNestedClass {
+    class OrderNestedClassTwoTest {
         @Test
         void shouldThrowsExceptionWhenListOrders() {
             Mockito.when(orderRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
