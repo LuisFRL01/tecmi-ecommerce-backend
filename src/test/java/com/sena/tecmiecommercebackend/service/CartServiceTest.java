@@ -67,11 +67,23 @@ public class CartServiceTest {
 
     @Test
     @DisplayName("Erro ao deletar item do carrinho")
-    void shouldDeleteCartItemTest() {
+    void shouldThrowsExceptionDeleteCartItemTest() {
         Mockito.when(cartRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
 
         assertThrows(CustomException.class, () -> cartService.deleteCartItem(cart.getId(), userMock));
         Mockito.verify(cartRepository, Mockito.times(1)).findById(Mockito.anyInt());
+    }
+
+    @Test
+    @DisplayName("Erro ao deletar item do carrinho")
+    @Disabled
+    void shouldDeleteCartItemTest() {
+        Mockito.when(cartRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(cart));
+        Mockito.doNothing().when(cartRepository).delete(cart);
+
+        assertDoesNotThrow(() -> cartService.deleteCartItem(cart.getId(), userMock));
+        Mockito.verify(cartRepository, Mockito.times(1)).findById(Mockito.anyInt());
+        Mockito.verify(cartRepository, Mockito.times(1)).delete(cart);
     }
 
     @Test
